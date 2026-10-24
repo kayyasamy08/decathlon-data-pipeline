@@ -1,60 +1,100 @@
 # Decathlon Product Data Scraping
 
-## 📌 Project Overview
+## Project Overview
 
-This project collects product information from the Decathlon category API using Python. The extracted product data is processed and exported to CSV format for further analysis.
+This project uses Python and Scrapy to collect product information from the Decathlon category API. It retrieves product data from multiple categories, extracts structured fields from JSON responses, and exports the results to a CSV file for further analysis.
 
-## 🎯 Project Objectives
-
-* Retrieve product information from an API.
-* Extract relevant product details.
-* Store the collected data in CSV format.
-* Prepare product data for analysis and dashboard development.
-
-## 🛠️ Technologies Used
+## Technologies Used
 
 * Python
-* REST API
-* Pandas
 * Scrapy
+* REST API
+* JSON
 * CSV
 
-## 📊 Data Fields
+## Key Features
 
-The collected dataset includes:
+* Collect product data from five configured Decathlon categories.
+* Retrieve product information through API requests.
+* Handle pagination to collect products across multiple pages.
+* Extract and normalize product attributes.
+* Generate product page URLs using available product identifiers and slugs.
+* Export the collected records to CSV format.
 
-* Product ID
-* Product Name
-* Brand
-* Selling Price
-* Maximum Retail Price (MRP)
-* Discount
-* Rating
-* Number of Reviews
-* Product URL
-* Category ID
+## Data Fields
 
-## ⚙️ Project Workflow
+The exported dataset includes:
 
-1. Send requests to the Decathlon category API.
-2. Retrieve product information from the API response.
-3. Extract the required product fields.
-4. Process the extracted data.
-5. Export the product data to a CSV file.
+* `objectID`
+* `modelId`
+* `brand`
+* `productName`
+* `slug`
+* `web_page`
+* `image`
+* `rating`
+* `reviews`
+* `sellingPrice`
+* `mrp`
+* `discount`
+* `isExpressEligible`
+* `category_id`
 
-## 📁 Project Files
+## Project Workflow
 
-* `decathlon_products.py` — Python script for product data extraction.
-* `decathlon_1000_products.csv` — Sample of the collected product dataset (if included).
+1. Configure the product category IDs.
+2. Send JSON requests to the Decathlon category API using Scrapy.
+3. Retrieve product data and pagination information.
+4. Extract product details from the API response.
+5. Normalize the product fields into structured records.
+6. Export the collected data to a CSV file.
 
-## 💡 Key Learning Outcomes
+## Project Structure
+
+```text
+decathlon-data-pipeline/
+├── decathlon_products.py
+├── requirements.txt
+├── decathlon_sample.csv
+└── README.md
+```
+
+*The sample CSV is optional and should be included only if uploaded.*
+
+## How to Run
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/kayyasamy08/decathlon-data-pipeline.git
+cd decathlon-data-pipeline
+```
+
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the scraper
+
+```bash
+python decathlon_products.py
+```
+
+The script is configured to export product records to `decathlon_1000_products.csv`.
+
+The number of records collected depends on the API response and the products available in the configured categories.
+
+## Learning Outcomes
 
 * Working with APIs using Python.
-* Extracting structured product data.
-* Handling product information using Python libraries.
-* Exporting data to CSV for analysis.
+* Using Scrapy to collect structured data.
+* Handling JSON responses and pagination.
+* Extracting and normalizing product attributes.
+* Exporting structured data to CSV files.
 
-## 👨‍💻 Author
+## Author
 
 Ayyasamy
 
